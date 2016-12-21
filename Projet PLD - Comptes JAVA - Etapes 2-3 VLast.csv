@@ -1,0 +1,252 @@
+WBS;Nom;Noms_ressources;Travail
+0;;;386 j
+1;Init (conception - dev);;67 j
+1.1;Alex - Dde Services;Alex;18 j
+;Alex;Alex;18 j
+1.2;Julien - Création compte;Julien;18 j
+;Julien;Julien;18 j
+1.3;Rochdi - Dde Services - Directives;Rochdi;20 j
+;Rochdi;Rochdi;20 j
+1.4;Lamine;Lamine;0 j
+;Lamine;Lamine;0 j
+1.5;Boun - Directives;Boun;3,5 j
+;Boun;Boun;3,5 j
+1.6;DG - Planning;DG;7,5 j
+;DG;DG;7,5 j
+2;Etape 2-3;;311,5 j
+2.1;Jalon Livraison spec V1;;0 j
+2.2;Réglette Début conception;;0 j
+2.3;Conception;;46,5 j
+2.3.1;Apec.fr;;16 j
+2.3.1.1;Postulation sur Offre avec FSR;Alex;1 j
+;Alex;Alex;1 j
+2.3.1.2;Création et Modif  CV avec Nature Diplôme;Boun;2 j
+;Boun;Boun;2 j
+2.3.1.3;Publication CV avec FSR;Boun;2 j
+;Boun;Boun;2 j
+2.3.1.4;Création et Modif Compte simplifié;"Julien;DG";6 j
+;Julien;Julien;2,6 j
+;DG;DG;3,4 j
+2.3.1.5;Modification Utilisateur (mail et MDP);Julien;2 j
+;Julien;Julien;2 j
+2.3.1.6;Passage en angular de la gestion de compte;Julien;1 j
+;Julien;Julien;1 j
+2.3.1.7;Demande services : Angular / Compte / FSR;DG;2 j
+;DG;DG;2 j
+2.3.2;PDS;;4 j
+2.3.2.1;Création / Modification de compte simplifiée;"DG;Alex";3 j
+;Alex;Alex;1 j
+;DG;DG;2 j
+2.3.2.2;Affichage du compte et des Actes;Lamine;1 j
+;Lamine;Lamine;1 j
+2.3.3;Technique;;5,5 j
+2.3.3.1;Enregistrement des actes cadres;"DG;Alex;Boun;Julien";4,5 j
+;Alex;Alex;1 j
+;Julien;Julien;0,5 j
+;Boun;Boun;1,5 j
+;DG;DG;1,5 j
+2.3.3.2;Doc archi PMP synchro Demande CRM;DG;1 j
+;DG;DG;1 j
+2.3.4;PMP;;8 j
+2.3.4.1;Purge des actes cadres;DG;8 j
+;DG;DG;8 j
+2.3.5;Collaboration etudes impacts NLE + STAD + CRM;DG;5 j
+;DG;DG;5 j
+2.3.6;Collaboration Conception MOA;Jenny;2 j
+;Jenny;Jenny;2 j
+2.3.7;Collaboration Conception Archi application;Karim;5 j
+;Karim;Karim;5 j
+2.3.8;Collaboration Conception Archi données;Linda;1 j
+;Linda;Linda;1 j
+2.4;Réglette début Dev;;0 j
+2.5;Développements;;200 j
+2.5.1;Initialisation des environnements;;25 j
+2.5.1.1;INT3;DG;10 j
+;DG;DG;10 j
+2.5.1.2;LOC-Julien;Julien;3 j
+;Julien;Julien;3 j
+2.5.1.3;LOC-Rochdi;Rochdi;3 j
+;Rochdi;Rochdi;3 j
+2.5.1.4;LOC-Alex;Alex;3 j
+;Alex;Alex;3 j
+2.5.1.5;LOC-Boun;Boun;3 j
+;Boun;Boun;3 j
+2.5.1.6;LOC-Lamine;Lamine;3 j
+;Lamine;Lamine;3 j
+2.5.2;Apec.fr;;108 j
+2.5.2.1;Simplification compte;;26 j
+2.5.2.1.1;Création , Reprise des pages, suppression code mort et mise en cohérence des pages;Julien;5 j
+;Julien;Julien;5 j
+2.5.2.1.2;Modification de compte;Julien;5 j
+;Julien;Julien;5 j
+2.5.2.1.3;Reprise controleur;Julien;5 j
+;Julien;Julien;5 j
+2.5.2.1.4;Reprise du wording des mail;Julien;1 j
+;Julien;Julien;1 j
+2.5.2.1.5;Reprise du wording des pages;Julien;1 j
+;Julien;Julien;1 j
+2.5.2.1.6;Reprise graphisme des pages;FredZ;1 j
+;FredZ;FredZ;1 j
+2.5.2.1.7;RISQUE : Reprise sur modification de mail;RisqOpport;8 j
+;RisqOpport;RisqOpport;8 j
+2.5.2.2;Adaptation Postulation sur offre;;6 j
+2.5.2.2.1;Rajout des champs dans les deux pages de postulation en form editor;Lamine;3 j
+;Lamine;Lamine;3 j
+2.5.2.2.2;Intégration de l'init pour la récupération des critères;Lamine;1 j
+;Lamine;Lamine;1 j
+2.5.2.2.3;RISQUE : Reprise de l'intégration des critères en allant chercher la dernière postulation;RisqOpport;2 j
+;RisqOpport;RisqOpport;2 j
+2.5.2.3;Adaptation Publication CV;;7 j
+2.5.2.3.1;Rajout de la saisie de la nature du diplôme dans formeditor;Alex;2 j
+;Alex;Alex;2 j
+2.5.2.3.2;Rajout du champs dans la page en form editor;Boun;2 j
+;Boun;Boun;2 j
+2.5.2.3.3;Intégration de l'init pour la récupération des CV;Boun;1 j
+;Boun;Boun;1 j
+2.5.2.3.4;RISQUE : Reprise de l'intégration des critères en allant chercher la dernière publication;RisqOpport;2 j
+;RisqOpport;RisqOpport;2 j
+2.5.2.4;Composants;;10 j
+2.5.2.4.1;Création d'un Composant lieu unique pour form editor;Alex;5 j
+;Alex;Alex;5 j
+2.5.2.4.2;Relicat Lot 1 Reprise du composant date-picker;Rochdi;5 j
+;Rochdi;Rochdi;5 j
+2.5.2.5;Gestion des demandes;;59 j
+2.5.2.5.1;Intégration page de login;Alex;2 j
+;Alex;Alex;2 j
+2.5.2.5.2;Initialisation des demande de service;Alex;2 j
+;Alex;Alex;2 j
+2.5.2.5.3;Soumission de la demande de service;Alex;5 j
+;Alex;Alex;5 j
+2.5.2.5.4;Intégration Compte + Acte + Consolidation;Alex;2 j
+;Alex;Alex;2 j
+2.5.2.5.5;Service générique;Alex;3 j
+;Alex;Alex;3 j
+2.5.2.5.6;service 1 diagnostic formation;Rochdi;5 j
+;Rochdi;Rochdi;5 j
+2.5.2.5.7;service 2 VPM cadre;Rochdi;5 j
+;Rochdi;Rochdi;5 j
+2.5.2.5.8;service 2 VPM JD;Rochdi;5 j
+;Rochdi;Rochdi;5 j
+2.5.2.5.9;service 3 Objectif candidature;Rochdi;5 j
+;Rochdi;Rochdi;5 j
+2.5.2.5.10;"service 4 Entreprendre""J'y pense""";Rochdi;5 j
+;Rochdi;Rochdi;5 j
+2.5.2.5.11;RISQUE : validateur;RisqOpport;5 j
+;RisqOpport;RisqOpport;5 j
+2.5.2.5.12;RISQUE : Init Get Histo;RisqOpport;5 j
+;RisqOpport;RisqOpport;5 j
+2.5.2.5.13;RISQUE : Init Même Demande;RisqOpport;10 j
+;RisqOpport;RisqOpport;10 j
+2.5.3;PDS;;10 j
+2.5.3.1;Adaptation écran de création de compte;Alex;4 j
+;Alex;Alex;4 j
+2.5.3.2;Ecran visu actes;Alex;6 j
+;Alex;Alex;6 j
+2.5.4;Services Métiers;;44 j
+2.5.4.1;Actes Cadre;;12 j
+2.5.4.1.1;Count des actes pour un cadre;Julien;1 j
+;Julien;Julien;1 j
+2.5.4.1.2;GetterPaginé;Julien;1 j
+;Julien;Julien;1 j
+2.5.4.1.3;CRUD actes;Boun;3 j
+;Boun;Boun;3 j
+2.5.4.1.4;BASE : Modélisation de la base, descente table;DG;2 j
+;DG;DG;2 j
+2.5.4.1.5;Service CRUD sur tables acte_cadre;Julien;2 j
+;Julien;Julien;2 j
+2.5.4.1.6;Pattern d'utilisation Actes Cadres avec une interface;Boun;3 j
+;Boun;Boun;3 j
+2.5.4.2;Compte Cadres;;9 j
+2.5.4.2.1;Isolation Critères 0;Alex;2 j
+;Alex;Alex;2 j
+2.5.4.2.2;Isolation CV 0;Alex;1 j
+;Alex;Alex;1 j
+2.5.4.2.3;Création compte cadre allégée;Julien;2 j
+;Julien;Julien;2 j
+2.5.4.2.4;Validateur compte cadre allégée;Julien;2 j
+;Julien;Julien;2 j
+2.5.4.2.5;RISQUE : WS robustesse mot de passe;RisqOpport;1 j
+;RisqOpport;RisqOpport;1 j
+2.5.4.2.6;Relicat LOT 1 : Rendre la colonne ID_NOM_EMPLOI_OCCUPE Nullable & renommé;DG;1 j
+;DG;DG;1 j
+2.5.4.3;Demande de services;;18 j
+2.5.4.3.1;WS Demande de services générique;Alex;10 j
+;Alex;Alex;10 j
+2.5.4.3.2;WS Dde Sce spécifique 1;Lamine;2 j
+;Lamine;Lamine;2 j
+2.5.4.3.3;WS Dde Sce spécifique 2;Lamine;2 j
+;Lamine;Lamine;2 j
+2.5.4.3.4;WS Dde Sce spécifique 3;Lamine;2 j
+;Lamine;Lamine;2 j
+2.5.4.3.5;WS Dde Sce spécifique 4;Lamine;2 j
+;Lamine;Lamine;2 j
+2.5.4.4;Adaptation Publication CV;;3 j
+2.5.4.4.1;Historisation BDD candidature en utilisant une interface;Boun;2 j
+;Boun;Boun;2 j
+2.5.4.4.2;Consolidation des informations dans le CV 0 en utilisant le DTO CV_cadre (attention upsert);Boun;1 j
+;Boun;Boun;1 j
+2.5.4.5;Adaptation postulation sur offre;;2 j
+2.5.4.5.1;Historisation  BDD candidature en utilisant une interface;Lamine;1 j
+;Lamine;Lamine;1 j
+2.5.4.5.2;Consolidation des informations dans le critère 0 en utilisant le DTO critere_cadre (attention upsert);Lamine;1 j
+;Lamine;Lamine;1 j
+2.5.5;RISQUE : Réalisation d'opération de purge des actes;RisqOpport;10 j
+;RisqOpport;RisqOpport;10 j
+2.5.6;Moteur de recherche - Relicat;;2 j
+2.5.6.1;Déplacement de lieux Core;Lamine;1 j
+;Lamine;Lamine;1 j
+2.5.6.2;Adaptation geoloc_street_core;Lamine;1 j
+;Lamine;Lamine;1 j
+2.5.7;PMP Inscription Salon;;1 j
+2.5.7.1;Insertion des cadres en base;Alex;1 j
+;Alex;Alex;1 j
+2.6;Réglette Début Recette;;0 j
+2.7;Recette ;;48 j
+2.7.1;Installation de la recette;;9 j
+2.7.1.1;R7-Consolidation du BL;DG;4 j
+;DG;DG;4 j
+2.7.1.2;R7-Livraison de la recette;DG;5 j
+;DG;DG;5 j
+2.7.2;Accompagnement de la recette;;35 j
+2.7.2.1;R7-Simplification des comptes;Julien;10 j
+;Julien;Julien;10 j
+2.7.2.2;R7-Impact CV & Publication;Boun;5 j
+;Boun;Boun;5 j
+2.7.2.3;R7-Impact Offres;Lamine;5 j
+;Lamine;Lamine;5 j
+2.7.2.4;R7-Impact Demande de services;Rochdi;10 j
+;Rochdi;Rochdi;10 j
+2.7.2.5;R7-Impact Global SI;Boun;5 j
+;Boun;Boun;5 j
+2.7.2.6;R7-PV de livraison;;0 j
+2.7.3;Livraison en prod;;4 j
+2.7.3.1;R7-Packaging de la livraison;DG;2 j
+;DG;DG;2 j
+2.7.3.2;R7-Finalisation du BL;DG;1 j
+;DG;DG;1 j
+2.7.3.3;R7-Mise à jour archi;DG;1 j
+;DG;DG;1 j
+2.8;Suivi;DG-CP;12 j
+;DG-CP;DG-CP;12 j
+2.9;Cloture projet;DG;5 j
+;DG;DG;5 j
+3;Date Planning;;0 j
+3.1;Début Recette;Planning;0 j
+;Planning;Planning;0 j
+3.2;MEP;Planning;0 j
+;Planning;Planning;0 j
+4;Imprévu;;7,5 j
+4.1;Réunion Alex;Alex;1 j
+;Alex;Alex;1 j
+4.2;Réunion Rochdi;Rochdi;1 j
+;Rochdi;Rochdi;1 j
+4.3;Réunion Julien;Julien;1 j
+;Julien;Julien;1 j
+4.4;Réunion Boun;Boun;1,5 j
+;Boun;Boun;1,5 j
+4.5;Réunion Lamine;Lamine;1 j
+;Lamine;Lamine;1 j
+4.6;Réunion DGL;DG;1 j
+;DG;DG;1 j
+4.7;Réunion DGL-CP;DG-CP;1 j
+;DG-CP;DG-CP;1 j
