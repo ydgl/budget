@@ -19,7 +19,7 @@ CONST G_BL_US_HOWTO_COL = 4
 CONST G_BL_US_NOTE_COL = 5
 CONST G_BL_START_ROW_OFFSET = 0
 
-Const G_CARDS_SHEETNAME = "CARDS"		
+Const G_CARDS_SHEETNAME = "Cards"		
 
 Const G_TEMPLATE_SHEETNAME = "Template"	
 Const G_TPL_ID_CARD = "C2"
@@ -29,11 +29,18 @@ Const G_TPL_IMPORTANCE_CARD = "E5"
 Const G_TPL_ESTIMATION_CARD = "E8"
 Const G_TPL_HOWTO_CARD = "C8"
 Const G_TPL_NOTE_CARD = "C5"
+Const G_TPL_RNG_ADDRESS = "A1:F10"
 
 
 Const G_LOGSHEET_NAME = "LOG"
 Const G_ARRAY_STEP_SIZE = 100
 
+
+Public Sub __testSub()
+
+    'FillTemplateWithBlEntry(1)
+	CopyTemplate(ThisComponent.Sheets.getByName(G_CARDS_SHEETNAME),0)
+End Sub
 
 ' Insert in G_LOGSHEET_NAME text at first line
 Sub logDebug(text as String)
@@ -154,18 +161,24 @@ Private Sub SetPageBreaks(ByRef targetSheet As Worksheet, ByRef numberOfCards)
 
 End Sub
 
+
+
 Private Sub CopyTemplate(ByRef sheet As Worksheet, ByRef rowIndex As Integer)
-
-    Dim rng As Object
-  
-    Set rng = sheet.Rows(rowIndex)
+    Dim oSheetSrc As Object
+	Dim oSheetDst As Object
     
-    rng.PasteSpecial Paste:=8, Operation:=xlNone, _
-        SkipBlanks:=False, Transpose:=False
+    Dim srcCellRange As Object
+    Dim dstCellRange As Object
+	
+	oSheetDst = sheet
+	
+	'oSheetDst = ThisComponent.Sheets.getByName(G_TEMPLATE_SHEETNAME)
+	oSheetSrc = ThisComponent.Sheets.getByName(G_TEMPLATE_SHEETNAME)
+	
 
-        
-    rng.PasteSpecial Paste:=xlPasteAll, Operation:=xlNone, _
-        SkipBlanks:=False, Transpose:=False
+	srcCellRange = oSheetSrc.getCellRangeByName(G_TPL_RNG_ADDRESS)
+	dstCellRange = oSheetDst.getCellByPosition(0, rowIndex)
+	oSheetDst.CopyRange(dstCellRange.CellAddress, srcCellRange.RangeAddress)
 
 End Sub
 
@@ -193,11 +206,7 @@ End Sub
 	'parseSelectionAndGetRowsArray
 'End Function
 
-Public Sub testSub()
 
-    FillTemplateWithBlEntry(1)
-
-End Sub
 
 
 Public Sub BuildIndexCardUsingCurrentSelection()
@@ -311,9 +320,9 @@ End Sub
 
 
 ' TODO
-'   4 Decouper le code
+'   4 Decouper le code & refacto globale
 '   CANCEL Utiliser un tableau d'ID de card  --> pas besoin
-'   2 Fonction de copy du template
+'   DONE Fonction de copy du template
 '   3 Fonction de vidage du template
 '   DONE Fonction d'écriture dans le template (on ecrit dans le template puis on le copie puis on le vide)
 '   3 Fonction de vidage de la la liste des card
