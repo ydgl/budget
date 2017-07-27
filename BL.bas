@@ -11,36 +11,37 @@ Option Explicit
 
 
 Const G_BACKLOG_SHEETNAME = "Product Backlog"
+'     BackLog_UserStory...
 CONST G_BL_US_ID_CARD_COL = 0
 CONST G_BL_US_NAME_COL = 1
 CONST G_BL_US_TYPE_COL = 2
 CONST G_BL_US_ESTIMATION_COL = 3
 CONST G_BL_US_HOWTO_COL = 4
 CONST G_BL_US_NOTE_COL = 5
+' Size of header of backlog
 CONST G_BL_START_ROW_OFFSET = 0
 
-Const G_CARDS_SHEETNAME = "Cards"		
+'Const G_CARDS_SHEETNAME = "Cards"		
 
 Const G_TEMPLATE_SHEETNAME = "Template"	
-Const G_TPL_ID_CARD = "C2"
-Const G_TPL_NAME_CARD = "C3"
-Const G_TPL_TYPE_CARD = "C9"
-Const G_TPL_IMPORTANCE_CARD = "E5"
-Const G_TPL_ESTIMATION_CARD = "E8"
-Const G_TPL_HOWTO_CARD = "C8"
-Const G_TPL_NOTE_CARD = "C5"
-Const G_TPL_RNG_ADDRESS = "A1:F10"
+Const G_TPL_ID_CARD = "D2"
+Const G_TPL_NAME_CARD = "B2"
+Const G_TPL_IMPORTANCE_CARD = "D5"
+Const G_TPL_NOTE_CARD = "B5"
+Const G_TPL_ESTIMATION_CARD = "D8"
+Const G_TPL_HOWTO_CARD = "B8"
+Const G_TPL_TYPE_CARD = "B10"
+Const G_TPL_RNG_ADDRESS = "A1:F11"
+' Number of line for one template
+'Const G_TPL_HEIGHT = 11
+
+
 
 
 Const G_LOGSHEET_NAME = "LOG"
 Const G_ARRAY_STEP_SIZE = 100
 
-
-Public Sub __testSub()
-
-    'FillTemplateWithBlEntry(1)
-	CopyTemplate(ThisComponent.Sheets.getByName(G_CARDS_SHEETNAME),0)
-End Sub
+Dim g_blSheet as Object
 
 ' Insert in G_LOGSHEET_NAME text at first line
 Sub logDebug(text as String)
@@ -64,43 +65,73 @@ End Sub
 
 '--------------------------------------------------------------
 
-
+Private Sub initBl(ByRef blSheet as Object) 
+	g_blSheet = blSheet
+End Sub
 
 Public Function blCardId(ByVal rowNb as Integer) as String
 	
-	blCardId = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_ID_CARD_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
-	
+	blCardId = ""
+	if (Not IsEmpty(g_blSheet)) then
+		blCardId = g_blSheet.getCellByPosition(G_BL_US_ID_CARD_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	end if
+		
 End Function
 
 Public Function blCardName(ByVal rowNb as Integer) as String
 	
-	blCardName = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_NAME_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+'	blCardName = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_NAME_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	
+	blCardName = ""
+	if (Not IsEmpty(g_blSheet)) then
+		blCardName = g_blSheet.getCellByPosition(G_BL_US_NAME_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	end if
 	
 End Function
 
 
 Public Function blCardType(ByVal rowNb as Integer) as String
 	
-	blCardType = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_TYPE_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	'blCardType = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_TYPE_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	
+	blCardType = ""
+	if (Not IsEmpty(g_blSheet)) then
+		blCardType = g_blSheet.getCellByPosition(G_BL_US_TYPE_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	end if
 	
 End Function
 
 Public Function blCardEstimation(ByVal rowNb as Integer) as String
 	
-	blCardEstimation = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_ESTIMATION_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	'blCardEstimation = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_ESTIMATION_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	
+	blCardEstimation = ""
+	if (Not IsEmpty(g_blSheet)) then
+		blCardEstimation = g_blSheet.getCellByPosition(G_BL_US_ESTIMATION_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	end if
 		
 End Function
 
 Public Function blCardHowto(ByVal rowNb as Integer) as String
 	
-	blCardHowto = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_HOWTO_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	'blCardHowto = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_HOWTO_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+
+	blCardHowto = ""
+	if (Not IsEmpty(g_blSheet)) then
+		blCardHowto = g_blSheet.getCellByPosition(G_BL_US_HOWTO_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	end if
 	
 End Function
 
 Public Function blCardNote(ByVal rowNb as Integer) as String
 	
-	blCardNote = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_NOTE_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
-	
+	'blCardNote = ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME).getCellByPosition(G_BL_US_NOTE_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+
+	blCardNote = ""
+	if (Not IsEmpty(g_blSheet)) then
+		blCardNote = g_blSheet.getCellByPosition(G_BL_US_NOTE_COL, G_BL_START_ROW_OFFSET+rowNb).Formula
+	end if
+		
 End Function
 
 
@@ -108,121 +139,82 @@ End Function
 
 '----------------------------------------------
 
-
-
-Private Sub RemoveCardSheet()
-
-    On Error GoTo ErrHandler:
-
-    Dim sheet As Object
-    Dim sheetFound As Boolean
-    sheetFound = True
-    Set sheet = Sheets(CARDS_SHEETNAME)
-    If (sheetFound = True) Then
-        Application.DisplayAlerts = False
-        sheet.Delete
-        Application.DisplayAlerts = True
-    End If
-
-    Exit Sub
-ErrHandler:
-    ' error handling code
-    sheetFound = False
-
-    Resume Next
-    
+Private Sub InitTemplate(ByRef sheet As Worksheet)
+		sheet.getCellRangeByName(G_TPL_ID_CARD).setFormula("ID")
+		sheet.getCellRangeByName(G_TPL_NAME_CARD).setFormula("Name / Title")
+		sheet.getCellRangeByName(G_TPL_TYPE_CARD).setFormula("Type")
+		sheet.getCellRangeByName(G_TPL_IMPORTANCE_CARD).setFormula("Importance")
+		sheet.getCellRangeByName(G_TPL_ESTIMATION_CARD).setFormula("Estimation")
+		sheet.getCellRangeByName(G_TPL_HOWTO_CARD).setFormula("How To Test")
+		sheet.getCellRangeByName(G_TPL_NOTE_CARD).setFormula("Note / Description")
 End Sub
 
-
-
-
-Private Sub SetPageBreaks(ByRef targetSheet As Worksheet, ByRef numberOfCards)
-
-    'add the page breaks
-    ActiveWindow.View = xlPageBreakPreview
-    Application.CutCopyMode = False
-    Dim pageBreakIndex As Integer
-    Dim i As Integer
-    
-    For i = 1 To numberOfCards - 1
-        
-        If (i Mod 2 = 0) Then
-            'even
-            pageBreakIndex = pageBreakIndex + 1
-            
-            Dim s As String
-            s = Str(1 + (i * 11))
-            s = "A" & Trim(s)
-            Set targetSheet.HPageBreaks(pageBreakIndex).Location = Range(s)
-        End If
-
-    Next
-    ActiveWindow.View = xlNormalView
-
-End Sub
-
-
-
-Private Sub CopyTemplate(ByRef sheet As Worksheet, ByRef rowIndex As Integer)
-    Dim oSheetSrc As Object
-	Dim oSheetDst As Object
-    
+Private Sub CopyAndPasteTemplate(ByRef oSheetSrc As Object, ByRef oSheetDst As Worksheet, ByRef nItemNumber As Integer)
     Dim srcCellRange As Object
     Dim dstCellRange As Object
-	
-	oSheetDst = sheet
-	
-	'oSheetDst = ThisComponent.Sheets.getByName(G_TEMPLATE_SHEETNAME)
-	oSheetSrc = ThisComponent.Sheets.getByName(G_TEMPLATE_SHEETNAME)
-	
 
 	srcCellRange = oSheetSrc.getCellRangeByName(G_TPL_RNG_ADDRESS)
-	dstCellRange = oSheetDst.getCellByPosition(0, rowIndex)
+	' srcCellRange.EndRow is the height of each template card
+	dstCellRange = oSheetDst.getCellByPosition(0, nItemNumber*(srcCellRange.RangeAddress.EndRow+1))
+
 	oSheetDst.CopyRange(dstCellRange.CellAddress, srcCellRange.RangeAddress)
+
+	' Formating aspect ________________________________________________
+
+	' Insert page break for clean printing
+	oSheetDst.Rows(nItemNumber*(srcCellRange.RangeAddress.EndRow+1)).IsStartOfNewPage = true
+
+	' I did not find a way to make paste including formating, we copy height of row too
+	Dim n%
+	For n = srcCellRange.RangeAddress.StartRow to srcCellRange.RangeAddress.EndRow
+		oSheetDst.Rows(nItemNumber*(srcCellRange.RangeAddress.EndRow+1)+n).Height = oSheetSrc.Rows(n).Height
+	Next n
 
 End Sub
 
-Private Sub FillTemplateWithBlEntry(blRowNb as Integer)
+Private Sub FillTemplateWithBlRow(blRowIndex as Integer)
             
 		Dim oSheet as Object
 		
 		oSheet = ThisComponent.Sheets.getByName(G_TEMPLATE_SHEETNAME)
 		
-		oSheet.getCellRangeByName(G_TPL_ID_CARD).setFormula(blCardId(blRowNb))
-		oSheet.getCellRangeByName(G_TPL_NAME_CARD).setFormula(blCardName(blRowNb))
-		oSheet.getCellRangeByName(G_TPL_TYPE_CARD).setFormula(blCardType(blRowNb))
-		oSheet.getCellRangeByName(G_TPL_IMPORTANCE_CARD).setFormula(""+blRowNb)
-		oSheet.getCellRangeByName(G_TPL_ESTIMATION_CARD).setFormula(blCardEstimation(blRowNb))
-		oSheet.getCellRangeByName(G_TPL_HOWTO_CARD).setFormula(blCardHowto(blRowNb))
-		oSheet.getCellRangeByName(G_TPL_NOTE_CARD).setFormula(blCardNote(blRowNb))
+		oSheet.getCellRangeByName(G_TPL_ID_CARD).setFormula(blCardId(blRowIndex))
+		oSheet.getCellRangeByName(G_TPL_NAME_CARD).setFormula(blCardName(blRowIndex))
+		oSheet.getCellRangeByName(G_TPL_TYPE_CARD).setFormula(blCardType(blRowIndex))
+		oSheet.getCellRangeByName(G_TPL_IMPORTANCE_CARD).setFormula(""+blRowIndex)
+		oSheet.getCellRangeByName(G_TPL_ESTIMATION_CARD).setFormula(blCardEstimation(blRowIndex))
+		oSheet.getCellRangeByName(G_TPL_HOWTO_CARD).setFormula(blCardHowto(blRowIndex))
+		oSheet.getCellRangeByName(G_TPL_NOTE_CARD).setFormula(blCardNote(blRowIndex))
 
    
 End Sub
 
-  
+' Copy template to another sheet
+' Note : this way template sheet drive cards sheet formating
+Private Sub removeAndCopyTemplateSheet(sSheetName as String)
 
-'Private Function parseSelectionAndGetRowNbArray(oCurrSel as Object) As Integer()
+	If ThisComponent.Sheets().hasByName( sSheetName ) Then
+		ThisComponent.Sheets().removeByName( sSheetName)
+	End If
+	
+	' We expect less than 255 sheets
+	ThisComponent.Sheets().CopyByName( G_TEMPLATE_SHEETNAME, sSheetName , ThisComponent.Sheets().getCount() )
 
-	'parseSelectionAndGetRowsArray
-'End Function
+End Sub
 
-
-
-
-Public Sub BuildIndexCardUsingCurrentSelection()
-
+' Parse current selection and put selected row index in an array
+' current selection can be multiple
+Private Sub BuildRowIndexArrayFromCurrentSelection(ByRef rowIndexArray)
 	Dim nNbRanges%
 	Dim n%
-	Dim s as String
 	Dim oCurrSel as Object
 	Dim vCursor as Object
 	Dim oCurrSelPart as Object
-	Dim rowNbArray(G_ARRAY_STEP_SIZE-1)
-	Dim nRowNbArraySize%
-	
-	logDebug "BEGIN BuildIndexCardUsingCurrentSelection"
-	
-	' Get Sheetname from range
+	Dim rowIndexTmpArray(G_ARRAY_STEP_SIZE-1)
+	Dim nRowIndexArraySize%
+
+	logDebug "BEGIN BuildRowIndexArrayFromCurrentSelection"
+
 	oCurrSel = ThisComponent.getCurrentSelection()
 
 
@@ -248,7 +240,7 @@ Public Sub BuildIndexCardUsingCurrentSelection()
 
 	' We store in rowNbArray the selected row(s) number(s) ____________
 	' Order will be order of selection
-	nRowNbArraySize = 0
+	nRowIndexArraySize = 0
 	n = 0
 	Do
 	
@@ -270,8 +262,8 @@ Public Sub BuildIndexCardUsingCurrentSelection()
 		while vCursor.hasMoreElements
 			Dim currCell
 			currCell = vCursor.NextElement
-			rowNbArray(nRowNbArraySize) = currCell.RangeAddress.StartRow
-			nRowNbArraySize = nRowNbArraySize + 1
+			rowIndexTmpArray(nRowIndexArraySize) = currCell.RangeAddress.StartRow
+			nRowIndexArraySize = nRowIndexArraySize + 1
 			' TODO si nRowNbArraySize >  G_ARRAY_STEP_SIZE) alors on sort
 		Wend
 		
@@ -283,48 +275,46 @@ Public Sub BuildIndexCardUsingCurrentSelection()
 		
 	Loop While (n < nNbRanges)
 	
-	' We copy array and to the right size because shortening array ( redim(nRowNbArraySize) ) make the array empty !
-	' We copy array to avoid to vehiculate size with array while UBound() exists !
-	Dim rowNbArray2(nRowNbArraySize-1)
-	For n = 0 to nRowNbArraySize-1
-		rowNbArray2(n) = rowNbArray(n) 
+	Redim Preserve rowIndexTmpArray(nRowIndexArraySize-1)
+
+	rowIndexArray = rowIndexTmpArray
+	
+	logDebug "END BuildRowIndexArrayFromCurrentSelection"
+End Sub
+
+
+Public Sub BuildIndexCardUsingCurrentSelection()
+
+	Dim rowIndexArray()
+	Dim n%
+	Dim cardSheetName = "Cards"
+	
+	logDebug "BGN BuildIndexCardUsingCurrentSelection"
+	
+	
+	' TODO : Check if current selection is in BL sheet
+
+	initBl(ThisComponent.Sheets.getByName(G_BACKLOG_SHEETNAME)) 
+
+
+	BuildRowIndexArrayFromCurrentSelection(rowIndexArray)
+
+	removeAndCopyTemplateSheet(cardSheetName)
+
+	For n = 0 to UBound(rowIndexArray)
+		logDebug "    BuildIndexCardUsingCurrentSelection on line : " + rowIndexArray(n) 
+		FillTemplateWithBlRow(rowIndexArray(n))
+		CopyAndPasteTemplate(ThisComponent.Sheets.getByName(G_TEMPLATE_SHEETNAME), cardSheetName,n)
 	Next n
-	
 
+	'Leave template clean
+	InitTemplate(ThisComponent.Sheets.getByName(G_TEMPLATE_SHEETNAME))
 
-	For n = 0 to UBound(rowNbArray2)
-		logDebug "line to print : " + rowNbArray2(n) 
-	Next n
-
-'	cards= ReadCards(aRange)
-	
-	' Build Collection of backlog item ?
-	
-	
-	' Empty sheet destination
-	
-	' Print Card 1
-	' Print PageBreak 1
-	' Loop
-	
-	' Send to printer
-	
-'	nCurrentRow = ThisComponent.getCurrentController().getSelection().RangeAddress.StartRow
-	
-'	Dim szCurrentAccount
-'	szCurrentAccount = ThisComponent.sheets.getByName(mvtSheetName).getCellByPosition(mvtAccountCol, nCurrentRow).getFormula()
 
 	logDebug "END BuildIndexCardUsingCurrentSelection"
 	
 End Sub
 
 
-' TODO
-'   4 Decouper le code & refacto globale
-'   CANCEL Utiliser un tableau d'ID de card  --> pas besoin
-'   DONE Fonction de copy du template
-'   3 Fonction de vidage du template
-'   DONE Fonction d'écriture dans le template (on ecrit dans le template puis on le copie puis on le vide)
-'   3 Fonction de vidage de la la liste des card
 
 
