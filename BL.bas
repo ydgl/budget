@@ -21,7 +21,7 @@ CONST G_BL_US_NOTE_COL = 5
 ' Size of header of backlog
 CONST G_BL_START_ROW_OFFSET = 0
 
-'Const G_CARDS_SHEETNAME = "Cards"		
+Const G_CARDS_SHEETNAME = "Cards"		
 
 Const G_TEMPLATE_SHEETNAME = "Template"	
 Const G_TPL_ID_CARD = "D2"
@@ -42,6 +42,7 @@ Const G_LOGSHEET_NAME = "LOG"
 Const G_ARRAY_STEP_SIZE = 100
 
 Dim g_blSheet as Object
+
 
 ' Insert in G_LOGSHEET_NAME text at first line
 Sub logDebug(text as String)
@@ -149,28 +150,7 @@ Private Sub InitTemplate(ByRef sheet As Worksheet)
 		sheet.getCellRangeByName(G_TPL_NOTE_CARD).setFormula("Note / Description")
 End Sub
 
-Private Sub CopyAndPasteTemplate(ByRef oSheetSrc As Object, ByRef oSheetDst As Worksheet, ByRef nItemNumber As Integer)
-    Dim srcCellRange As Object
-    Dim dstCellRange As Object
 
-	srcCellRange = oSheetSrc.getCellRangeByName(G_TPL_RNG_ADDRESS)
-	' srcCellRange.EndRow is the height of each template card
-	dstCellRange = oSheetDst.getCellByPosition(0, nItemNumber*(srcCellRange.RangeAddress.EndRow+1))
-
-	oSheetDst.CopyRange(dstCellRange.CellAddress, srcCellRange.RangeAddress)
-
-	' Formating aspect ________________________________________________
-
-	' Insert page break for clean printing
-	oSheetDst.Rows(nItemNumber*(srcCellRange.RangeAddress.EndRow+1)).IsStartOfNewPage = true
-
-	' I did not find a way to make paste including formating, we copy height of row too
-	Dim n%
-	For n = srcCellRange.RangeAddress.StartRow to srcCellRange.RangeAddress.EndRow
-		oSheetDst.Rows(nItemNumber*(srcCellRange.RangeAddress.EndRow+1)+n).Height = oSheetSrc.Rows(n).Height
-	Next n
-
-End Sub
 
 Private Sub FillTemplateWithBlRow(blRowIndex as Integer)
             
@@ -201,6 +181,32 @@ Private Sub removeAndCopyTemplateSheet(sSheetName as String)
 	ThisComponent.Sheets().CopyByName( G_TEMPLATE_SHEETNAME, sSheetName , ThisComponent.Sheets().getCount() )
 
 End Sub
+
+Private Sub CopyAndPasteTemplate(ByRef oSheetSrc As Object, ByRef oSheetDst As Worksheet, nItemNumber As Integer)
+  
+    Dim srcCellRange As Object
+    Dim dstCellRange As Object
+
+	srcCellRange = oSheetSrc.getCellRangeByName(G_TPL_RNG_ADDRESS)
+	' srcCellRange.EndRow is the height of each template card
+	dstCellRange = oSheetDst.getCellByPosition(0, nItemNumber*(srcCellRange.RangeAddress.EndRow+1))
+
+	oSheetDst.CopyRange(dstCellRange.CellAddress, srcCellRange.RangeAddress)
+
+	' Formating aspect ________________________________________________
+
+	' Insert page break for clean printing
+	oSheetDst.Rows(nItemNumber*(srcCellRange.RangeAddress.EndRow+1)).IsStartOfNewPage = true
+
+	' I did not find a way to make paste including formating, we copy height of row too
+	Dim n%
+	For n = srcCellRange.RangeAddress.StartRow to srcCellRange.RangeAddress.EndRow
+		oSheetDst.Rows(nItemNumber*(srcCellRange.RangeAddress.EndRow+1)+n).Height = oSheetSrc.Rows(n).Height
+	Next n
+
+End Sub
+
+
 
 ' Parse current selection and put selected row index in an array
 ' current selection can be multiple
@@ -285,12 +291,11 @@ End Sub
 
 Public Sub BuildIndexCardUsingCurrentSelection()
 
+'	Dim cardSheetName = "Cards"
 	Dim rowIndexArray()
 	Dim n%
-	Dim cardSheetName = "Cards"
 	
 	logDebug "BGN BuildIndexCardUsingCurrentSelection"
-	
 	
 	' TODO : Check if current selection is in BL sheet
 
@@ -299,12 +304,12 @@ Public Sub BuildIndexCardUsingCurrentSelection()
 
 	BuildRowIndexArrayFromCurrentSelection(rowIndexArray)
 
-	removeAndCopyTemplateSheet(cardSheetName)
+	removeAndCopyTemplateSheet(G_CARDS_SHEETNAME)
 
 	For n = 0 to UBound(rowIndexArray)
 		logDebug "    BuildIndexCardUsingCurrentSelection on line : " + rowIndexArray(n) 
 		FillTemplateWithBlRow(rowIndexArray(n))
-		CopyAndPasteTemplate(ThisComponent.Sheets.getByName(G_TEMPLATE_SHEETNAME), cardSheetName,n)
+		CopyAndPasteTemplate(ThisComponent.Sheets.getByName(G_TEMPLATE_SHEETNAME), ThisComponent.Sheets.getByName(G_CARDS_SHEETNAME),n)
 	Next n
 
 	'Leave template clean
@@ -314,6 +319,8 @@ Public Sub BuildIndexCardUsingCurrentSelection()
 	logDebug "END BuildIndexCardUsingCurrentSelection"
 	
 End Sub
+
+
 
 
 
